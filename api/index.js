@@ -1,11 +1,17 @@
 import express from "express";
 import { promises as fsPromises } from "fs";
 import cors from "cors";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const filePath = path.join(__dirname, "totalAmount.json");
 const app = express();
 const PORT = 3000;
 app.use(cors());
 app.use(express.json());
-const filePath = "totalAmount.json";
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
